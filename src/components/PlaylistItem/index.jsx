@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Style from './Style'
+
 const PlaylistHeader = props => (
-    <div>
+    <Style>
         PlaylistHeader
-    </div>
+    </Style>
 )
 
 export default PlaylistHeader

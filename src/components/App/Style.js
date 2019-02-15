@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
     * {
         box-sizing: border-box;
     }
@@ -9,5 +9,3 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Hind', sans-serif;
     }
 `
-
-export default GlobalStyle

@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import NotFound from '../NotFound'
 import VideoPlayer from '../VideoPlayer'
 
-import GlobalStyle from "../../styles/GlobalStyle"
+import Style from "./Style"
 
 const App = () => (
     <BrowserRouter>
@@ -15,7 +15,7 @@ const App = () => (
                 <Route path="/:activeVideo" exact component={VideoPlayer} />
                 <NotFound />
             </Switch>
-            <GlobalStyle />
+            <Style />
         </>
     </BrowserRouter>
 )
