@@ -8,9 +8,19 @@ import Style from './Style'
 
 const Playlist = props => (
     <Style>
-        <NightMode />
-        <PlaylistHeader />
-        <PlaylistItems />
+        <NightMode
+            nightMode={props.nightMode}
+            handleChangeMode={props.handleChangeMode}
+        />
+        {/* TODO: */}
+        <PlaylistHeader
+            active={props.active}
+            total={props.videos && props.videos.length}
+        />
+        <PlaylistItems
+            active={props.active}
+            total={props.videos}
+        />
     </Style>
 )
 

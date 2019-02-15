@@ -28,12 +28,31 @@ const themeLight = {
 }
 
 const VideoPlayer = props => {
+    function handleChangeMode() { }
+    function handleProgress() { }
+    function handleEnd() { }
+
+    // TODO:
+    const state = {}
+
     return (
-        <ThemeProvider theme={StaticRange.nightMode ? theme : themeLight}>
-            <Style>
-                <Video />
-                <Playlist />
-            </Style>
+        <ThemeProvider theme={state.nightMode ? theme : themeLight}>
+            {state.videos !== null ? (
+                <Style>
+                    <Video
+                        active={state.activeVideo}
+                        autoplay={state.autoplay}
+                        handleEnd={handleEnd}
+                        handleProgress={handleProgress}
+                    />
+                    <Playlist
+                        active={state.active}
+                        videos={state.videos}
+                        nightMode={state.nightMode}
+                        handleChangeMode={handleChangeMode}
+                    />
+                </Style>
+            ) : null}
         </ThemeProvider>
     )
 }
