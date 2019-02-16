@@ -80,7 +80,7 @@ const VideoPlayer = props => {
                         handleProgress={handleProgress}
                     />
                     <Playlist
-                        active={state.active}
+                        active={state.activeVideo}
                         videos={state.videos}
                         nightMode={state.nightMode}
                         handleChangeMode={handleChangeMode}

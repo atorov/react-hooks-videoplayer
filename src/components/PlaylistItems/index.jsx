@@ -11,7 +11,7 @@ const PlaylistItems = props => (
             <PlaylistItem
                 key={video.id}
                 video={video}
-                active={video.id === props.active && props.active.ig}
+                active={video.id === (props.active && props.active.id)}
                 played={props.played}
             />
         ))}
