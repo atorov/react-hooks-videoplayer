@@ -39,6 +39,32 @@ const VideoPlayer = props => {
         nightMode: true,
     })
 
+    useEffect(
+        () => {
+            const videoId = props.match.params.activeVideo
+            if (videoId) {
+                const newActiveVideoIndex = state.videos.findIndex(video => video.id === videoId)
+                if (newActiveVideoIndex > -1) {
+                    setState({
+                        ...state,
+                        activeVideo: state.videos[newActiveVideoIndex],
+                        autoplay: props.location.autoplay,
+                    })
+                }
+                else {
+                    props.history.push('/not-found')
+                }
+            }
+            else {
+                props.history.push({
+                    pathname: `/${state.activeVideo.id}`,
+                    autoplay: false,
+                })
+            }
+        },
+        [props.match.params.activeVideo],
+    )
+
     function handleChangeMode() { }
     function handleProgress() { }
     function handleEnd() { }

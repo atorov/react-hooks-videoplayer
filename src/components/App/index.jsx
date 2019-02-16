@@ -12,6 +12,7 @@ const App = () => (
         <>
             <Switch>
                 <Route path="/" exact component={VideoPlayer} />
+                <Route path="/not-found" component={NotFound} />
                 <Route path="/:activeVideo" exact component={VideoPlayer} />
                 <NotFound />
             </Switch>
