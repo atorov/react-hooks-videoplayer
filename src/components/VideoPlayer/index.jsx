@@ -65,15 +65,41 @@ const VideoPlayer = props => {
         [props.match.params.activeVideo],
     )
 
-    function handleChangeMode() { }
-    function handleProgress() { }
-    function handleEnd() { }
+    function handleChangeMode() {
+        setState({
+            ...state,
+            nightMode: !state.nightMode,
+        })
+    }
+
+    function handleProgress(event) {
+        if (event.playedSeconds > 5 /* && event.playedSeconds < 6 */) {
+            console.log('::: nightMode:', state.nightMode)
+            const videos = state.videos.map(video => video.id === state.activeVideo.id ? { ...video, played: true } : video)
+            setState({ ...state, videos })
+        }
+    }
+
+    function handleEnd() {
+        const videoId = props.match.params.activeVideo
+        const currentVideoIndex = state.videos.findIndex(video => video.id === videoId)
+        if (currentVideoIndex > -1) {
+            const nextVideoIndex = currentVideoIndex !== state.videos.length - 1 ? currentVideoIndex + 1 : 0
+            props.history.push({
+                pathname: state.videos[nextVideoIndex].id,
+                autoplay: true,
+            })
+        }
+    }
 
     return (
         <ThemeProvider theme={state.nightMode ? theme : themeLight}>
             {state.videos !== null ? (
-                <Style>
+                <Style state={state}>
                     <Video
+                        // state={'' + state.nightMode} // TODO:
+                        // state={JSON.stringify(state)} // TODO:
+                        state={state} // TODO:
                         active={state.activeVideo}
                         autoplay={state.autoplay}
                         handleEnd={handleEnd}

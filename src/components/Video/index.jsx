@@ -10,6 +10,7 @@ const Video = props => (
         <StyleWrapper>
             {/* TODO: */}
             <ReactPlayer
+                state={props.state} // TODO:
                 playing={props.autoplay}
                 url={props.active && props.active.video}
                 controls
@@ -19,8 +20,8 @@ const Video = props => (
                     position: 'absolute',
                     top: 0,
                 }}
-                onProgress={props.handleEnd}
-                onEnded={props.handleProgress}
+                onProgress={props.handleProgress}
+                onEnded={props.handleEnd}
             />
         </StyleWrapper>
     </Style>

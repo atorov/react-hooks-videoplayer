@@ -12,7 +12,7 @@ const PlaylistItems = props => (
                 key={video.id}
                 video={video}
                 active={video.id === (props.active && props.active.id)}
-                played={props.played}
+                played={video.played}
             />
         ))}
 

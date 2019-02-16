@@ -24,7 +24,7 @@ export default styled.div`
         content: "";
         width: 10px;
         min-height: 10px;
-        background: #409f4e;
+        background: #770;
         border-radius: 50px;
         position: absolute;
         left: 0;
