@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { ThemeProvider } from 'styled-components'
 
@@ -28,12 +28,20 @@ const themeLight = {
 }
 
 const VideoPlayer = props => {
+    // TODO:
+    const videos = JSON.parse(document.querySelector('[name="videos"]').value)
+
+    const [state, setState] = useState({
+        videos: videos.playlist,
+        playlistId: videos.playlistId,
+        activeVideo: videos.playlist[0],
+        autoplay: false,
+        nightMode: true,
+    })
+
     function handleChangeMode() { }
     function handleProgress() { }
     function handleEnd() { }
-
-    // TODO:
-    const state = {}
 
     return (
         <ThemeProvider theme={state.nightMode ? theme : themeLight}>

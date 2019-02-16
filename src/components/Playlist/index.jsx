@@ -19,7 +19,7 @@ const Playlist = props => (
         />
         <PlaylistItems
             active={props.active}
-            total={props.videos}
+            videos={props.videos}
         />
     </Style>
 )
