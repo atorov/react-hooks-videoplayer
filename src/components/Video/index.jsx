@@ -10,7 +10,6 @@ const Video = props => (
         <StyleWrapper>
             {/* TODO: */}
             <ReactPlayer
-                state={props.state} // TODO:
                 playing={props.autoplay}
                 url={props.active && props.active.video}
                 controls

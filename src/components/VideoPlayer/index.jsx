@@ -45,11 +45,11 @@ const VideoPlayer = props => {
             if (videoId) {
                 const newActiveVideoIndex = state.videos.findIndex(video => video.id === videoId)
                 if (newActiveVideoIndex > -1) {
-                    setState({
-                        ...state,
-                        activeVideo: state.videos[newActiveVideoIndex],
+                    setState(prevState => ({
+                        ...prevState,
+                        activeVideo: prevState.videos[newActiveVideoIndex],
                         autoplay: props.location.autoplay,
-                    })
+                    }))
                 }
                 else {
                     props.history.push('/not-found')
@@ -66,17 +66,16 @@ const VideoPlayer = props => {
     )
 
     function handleChangeMode() {
-        setState({
-            ...state,
-            nightMode: !state.nightMode,
-        })
+        setState(prevState => ({
+            ...prevState,
+            nightMode: !prevState.nightMode,
+        }))
     }
 
     function handleProgress(event) {
-        if (event.playedSeconds > 5 /* && event.playedSeconds < 6 */) {
-            console.log('::: nightMode:', state.nightMode)
+        if (event.playedSeconds > 4 && event.playedSeconds < 5) {
             const videos = state.videos.map(video => video.id === state.activeVideo.id ? { ...video, played: true } : video)
-            setState({ ...state, videos })
+            setState(prevState => ({ ...prevState, videos }))
         }
     }
 
@@ -97,9 +96,6 @@ const VideoPlayer = props => {
             {state.videos !== null ? (
                 <Style state={state}>
                     <Video
-                        // state={'' + state.nightMode} // TODO:
-                        // state={JSON.stringify(state)} // TODO:
-                        state={state} // TODO:
                         active={state.activeVideo}
                         autoplay={state.autoplay}
                         handleEnd={handleEnd}
