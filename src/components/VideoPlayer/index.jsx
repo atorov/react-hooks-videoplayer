@@ -44,7 +44,14 @@ const VideoPlayer = props => {
     })
 
     useEffect(
-        () => window.localStorage.setItem(state.playlistId, JSON.stringify(state)),
+        () => {
+            try {
+                const serialized = JSON.stringify(state)
+                window.localStorage.setItem(state.playlistId, serialized)
+            } catch (reason) {
+                console.log('::: Save state in local storage failed with reason:', reason)
+            }
+        },
         [state],
     )
 
