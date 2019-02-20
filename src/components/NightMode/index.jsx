@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Style from './Style'
 
@@ -15,5 +16,11 @@ const NightMode = props => (
         </label>
     </Style>
 )
+
+NightMode.propTypes = {
+    nightMode: PropTypes.bool.isRequired,
+
+    handleChangeMode: PropTypes.func.isRequired,
+}
 
 export default NightMode
