@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NotFound = props => (
+const NotFound = () => (
     <h1>
         Page not found!
     </h1>
