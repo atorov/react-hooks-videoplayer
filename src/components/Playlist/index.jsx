@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import NightMode from '../NightMode'
 import PlaylistHeader from '../PlaylistHeader'
@@ -12,10 +13,9 @@ const Playlist = props => (
             nightMode={props.nightMode}
             handleChangeMode={props.handleChangeMode}
         />
-        {/* TODO: */}
         <PlaylistHeader
             active={props.active}
-            total={props.videos && props.videos.length}
+            total={props.videos.length}
         />
         <PlaylistItems
             active={props.active}
@@ -23,5 +23,13 @@ const Playlist = props => (
         />
     </Style>
 )
+
+Playlist.propTypes = {
+    active: PropTypes.object.isRequired,
+    nightMode: PropTypes.bool.isRequired,
+    videos: PropTypes.array.isRequired,
+
+    handleChangeMode: PropTypes.func.isRequired
+}
 
 export default Playlist
