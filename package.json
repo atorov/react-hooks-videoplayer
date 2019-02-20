@@ -2,6 +2,13 @@
   "name": "react-hooks-videoplayer",
   "version": "0.1.0",
   "private": true,
+  "author": "atorov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atorov/react-hooks-videoplayer.git"
+  },
+  "homepage": ".",
   "dependencies": {
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
