@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.div`
     background: ${props => props.theme.bgcolor};
-    border: ${props => props.theme.border};
+    /* border: ${props => props.theme.border}; */
     max-width: 1800px;
     margin: 0 auto;
     display: flex;

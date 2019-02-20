@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import _ from 'lodash'
 import { ThemeProvider } from 'styled-components'
@@ -142,6 +143,12 @@ const VideoPlayer = props => {
             ) : null}
         </ThemeProvider>
     )
+}
+
+VideoPlayer.propTypes = {
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
 }
 
 export default VideoPlayer
