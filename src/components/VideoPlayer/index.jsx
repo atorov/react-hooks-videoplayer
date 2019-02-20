@@ -30,14 +30,23 @@ const themeLight = {
 const VideoPlayer = props => {
     // TODO:
     const videos = JSON.parse(document.querySelector('[name="videos"]').value)
+    const savedState = JSON.parse(window.localStorage.getItem(videos.playlistId)) || {}
 
     const [state, setState] = useState({
-        videos: videos.playlist,
-        playlistId: videos.playlistId,
-        activeVideo: videos.playlist[0],
-        autoplay: false,
-        nightMode: true,
+        ...{
+            videos: videos.playlist,
+            playlistId: videos.playlistId,
+            activeVideo: videos.playlist[0],
+            autoplay: false,
+            nightMode: true,
+        },
+        ...savedState,
     })
+
+    useEffect(
+        () => window.localStorage.setItem(state.playlistId, JSON.stringify(state)),
+        [state],
+    )
 
     useEffect(
         () => {
