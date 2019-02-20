@@ -1,8 +1,8 @@
 # React Video Player
 
-![screen-demo](https://github.com/atorov/react-hooks-videoplayer/blob/master/public/react-videoplayer-x2.gif)
-
 React Hooks and Styled Components
+
+![screen-demo](https://github.com/atorov/react-hooks-videoplayer/blob/master/public/react-videoplayer-x2.gif)
 
 The Video Player can play both Vimeo and YouTube videos and also persists state in local storage of played videos.
 
