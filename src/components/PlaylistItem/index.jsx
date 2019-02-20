@@ -1,13 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Style from './Style'
 
 const PlaylistItem = props => (
     <Style active={props.active} played={props.played} >
-        {/* TODO: */}
         <div className="video-player__video-nr">
-            {props.video && props.video.num}
+            {props.video.num}
         </div>
 
         <div className="video-player__video-name">
@@ -15,14 +15,21 @@ const PlaylistItem = props => (
                 pathname: `/${props.video.id}`,
                 autoplay: true,
             }}>
-                {props.video && props.video.title}
+                {props.video.title}
             </Link>
         </div>
 
         <div className="video-player__video-time">
-            {props.video && props.video.duration}
+            {props.video.duration}
         </div>
     </Style>
 )
+
+PlaylistItem.propTypes = {
+    active: PropTypes.bool.isRequired,
+    video: PropTypes.object.isRequired,
+
+    played: PropTypes.bool,
+}
 
 export default PlaylistItem
