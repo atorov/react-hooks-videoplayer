@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import ReactPlayer from 'react-player'
 
@@ -8,10 +9,9 @@ import StyleWrapper from './StyleWrapper'
 const Video = props => (
     <Style>
         <StyleWrapper>
-            {/* TODO: */}
             <ReactPlayer
                 playing={props.autoplay}
-                url={props.active && props.active.video}
+                url={props.active.video}
                 controls
                 width="100%"
                 height="100%"
@@ -25,5 +25,14 @@ const Video = props => (
         </StyleWrapper>
     </Style>
 )
+
+Video.propTypes = {
+    active: PropTypes.object.isRequired,
+
+    handleEnd: PropTypes.func.isRequired,
+    handleProgress: PropTypes.func.isRequired,
+
+    autoplay: PropTypes.bool,
+}
 
 export default Video
