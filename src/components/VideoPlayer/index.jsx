@@ -30,7 +30,16 @@ const themeLight = {
 const VideoPlayer = props => {
     // TODO:
     const videos = JSON.parse(document.querySelector('[name="videos"]').value)
-    const savedState = JSON.parse(window.localStorage.getItem(videos.playlistId)) || {}
+
+    let savedState = {}
+    try {
+        const serialized = window.localStorage.getItem(videos.playlistId)
+        if (serialized) {
+            savedState = JSON.parse(serialized)
+        }
+    } catch (reason) {
+        console.error('::: Load state from the local storage failed with reason:', reason)
+    }
 
     const [state, setState] = useState({
         ...{
@@ -49,7 +58,7 @@ const VideoPlayer = props => {
                 const serialized = JSON.stringify(state)
                 window.localStorage.setItem(state.playlistId, serialized)
             } catch (reason) {
-                console.log('::: Save state in local storage failed with reason:', reason)
+                console.error('::: Save state in the local storage failed with reason:', reason)
             }
         },
         [state],
