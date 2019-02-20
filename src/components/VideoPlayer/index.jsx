@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import _ from 'lodash'
 import { ThemeProvider } from 'styled-components'
 
 import Playlist from '../Playlist'
@@ -27,6 +28,21 @@ const themeLight = {
     color: '#353535',
 }
 
+const saveState = _.throttle(
+    (state) => {
+        try {
+            const serialized = JSON.stringify(state)
+            window.localStorage.setItem(state.playlistId, serialized)
+            console.log('::: State has been saved to the local storage')
+        } catch (reason) {
+            console.error('::: Save state in the local storage failed with reason:', reason)
+        }
+    },
+    5000,
+    { 'leading': false },
+)
+
+
 const VideoPlayer = props => {
     // TODO:
     const videos = JSON.parse(document.querySelector('[name="videos"]').value)
@@ -52,17 +68,7 @@ const VideoPlayer = props => {
         ...savedState,
     })
 
-    useEffect(
-        () => {
-            try {
-                const serialized = JSON.stringify(state)
-                window.localStorage.setItem(state.playlistId, serialized)
-            } catch (reason) {
-                console.error('::: Save state in the local storage failed with reason:', reason)
-            }
-        },
-        [state],
-    )
+    useEffect(() => saveState(state), [state])
 
     useEffect(
         () => {
