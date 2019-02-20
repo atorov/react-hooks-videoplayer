@@ -43,9 +43,7 @@ const saveState = _.throttle(
     { 'leading': false },
 )
 
-
 const VideoPlayer = props => {
-    // TODO:
     const videos = JSON.parse(document.querySelector('[name="videos"]').value)
 
     let savedState = {}
